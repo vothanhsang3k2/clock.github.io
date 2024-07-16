@@ -1,364 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>AliEngine (Web Agency - Software House)</title>
-    <meta name="keywords" content="Aliengine, web agency, software house"/>
-    <meta name="description" content="Aliengine is a new software house and a web agency"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&display=swap" rel="stylesheet" crossorigin="anonymous"/>
-    <link href="css/default.css" rel="preload" as="style" type="text/css" media="all" crossorigin="anonymous"/>
-    <link href="css/all.min.css" rel="preload" as="style" type="text/css" media="all" crossorigin="anonymous"/>
-    <link href="css/default.css" rel="stylesheet" type="text/css" media="all" crossorigin="anonymous"/>
-    <link href="css/all.min.css" rel="stylesheet" type="text/css" media="all" crossorigin="anonymous"/>
+  <title>Countdown Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .rounded-border {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    #timer {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    #start-button {
+      background-color: #4CAF50;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 50px;
+    }
+    #start-button:hover {
+      background-color: #3e8e41;
+    }
+    #time-input {
+      width: 100px;
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>
-<div class="bg-gradient" id="header-cont">
-    <div id="header-wrapper">
-        <div id="header" class="container">
+  <div class="rounded-border">
+    <h1 id="timer">00:00</h1>
+  </div>
+  <div class="rounded-border">
+    <input id="time-input" type="text" value="00:00" pattern="[0-9]{2}:[0-9]{2}" />
+  </div>
+  <button id="start-button">Start</button>
 
-            <div id="logo">
-                <img class="alilogo" alt="logo" src="images/logo-white.png">
-                <h1><a href="#header-cont"><span>A</span>li<span>e</span>ngine</a></h1>
-            </div>
-            <div id="menu">
-                <ul>
-                    <li class="btn u-eff"><a href="#service" accesskey="3" title="">Service</a></li>
-                    <li class="btn u-eff"><a href="#clients" accesskey="1" title="">Our Clients</a></li>
-                    <li class="btn u-eff"><a href="#about" accesskey="2" title="">About Us</a></li>
-                    <li class="btn u-eff"><a href="#contact" accesskey="4" title="">Contact Us</a></li>
-                </ul>
-                <a href="javascript:void(0);" class="icon" onclick="topMenu()">
-                    <i class="fa fa-bars"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-    <div id="wrapper2">
-        <div id="welcome" class="container">
-            <img src="images/dev2.png" class="dev-coder" alt="coder">
-            <pre class="typewriter">
-                <span id="type-writer"></span><span class="typewriter-text"></span>
-            </pre>
+  <script>
+    let timerElement = document.getElementById('timer');
+    let timeInput = document.getElementById('time-input');
+    let startButton = document.getElementById('start-button');
+    let time = 0;
+    let intervalId = 0;
 
-        </div>
-    </div>
-    <div class="waveWrapper waveAnimation">
-        <div class="waveWrapperInner bgTop">
-            <div class="wave waveTop" style="background-image: url('images/cloud-bottom2.png')"></div>
-        </div>
-        <div class="waveWrapperInner bgMiddle">
-            <div class="wave waveMiddle" style="background-image: url('images/cloud-bottom2.png')"></div>
-        </div>
-        <div class="waveWrapperInner bgBottom">
-            <div class="wave waveBottom" style="background-image: url('images/cloud-bottom2.png')"></div>
-        </div>
-    </div>
-</div>
-
-<div id="service">
-    <div class="row container text-center">
-        <div class="col-4 col-m-6 col-s-12"><span class="icon-xxl icon fas fa-layer-group"></span>
-            <div class="title">
-                <h2>Agile Development</h2>
-            </div>
-            <p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac suscipit
-                mauris. Proin eu wisi suscipit nulla suscipit interdum.</p>
-        </div>
-        <div class="col-4 col-m-6 col-s-12"><span class="icon-xxl icon fas fa-server"></span>
-            <div class="title">
-                <h2>DevOps Specialist</h2>
-            </div>
-            <p>Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper suscipit eleifend. Donec
-                mattis libero eget urna. Duis pretium velit ac mauris.</p>
-        </div>
-        <div class="col-4 col-m-12 col-s-12"><span class="icon-xxl icon fas fa-network-wired"></span>
-            <div class="title">
-                <h2>IT Infrastructure</h2>
-            </div>
-            <p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit
-                interdum. Nullam non wisi a sem suscipit semper eleifend.</p>
-        </div>
-    </div>
-
-    <div class="row container text-center">
-        <div class="col-4 marg-0-auto">
-            <a href="#" class="button">Contact Us</a>
-        </div>
-    </div>
-
-    <div id="portfolio" class="container">
-        <div class="hilight text-center">
-            <h2>Vivamus fermentum nibh</h2>
-            <span class="byline">Integer sit amet pede vel arcu aliquet pretium</span></div>
-
-        <div class="row text-center">
-            <div class="col-3 col-s-12 col-m-6">
-
-                <h3>Vestibulum venenatis</h3>
-                <p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
-                <a href="#" class="button">Etiam posuere</a>
-
-            </div>
-            <div class="col-3 col-s-12 col-m-6">
-
-                <h3>Praesent scelerisque</h3>
-                <p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
-                <a href="#" class="button">Etiam posuere</a>
-
-            </div>
-            <div class="col-3 col-s-12 col-m-6">
-
-                <h3>Donec dictum metus</h3>
-                <p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
-                <a href="#" class="button">Etiam posuere</a>
-
-            </div>
-            <div class="col-3 col-s-12 col-m-6">
-
-                <h3>Mauris vulputate dolor</h3>
-                <p>Rutrum fermentum nibh in augue praesent urna congue rutrum.</p>
-                <a href="#" class="button">Etiam posuere</a>
-
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div id="clients" class="hilight text-center mt-50"><h2>Our Clients</h2></div>
-<div class="row container">
-    <div class="col-s-12 col-4">
-        <div class="team">
-            <img src="images/work/istitutofalconieri.jpg" alt="Istituto Falconieri">
-            <div class="team-content">
-                <h3 class="team-title">Istituto Falconieri</h3>
-                <span class="post">Istituto Falconieri</span>
-                <p class="description">
-                    Wordpress
-                </p>
-            </div>
-            <a href="http://www.istitutofalconieri.com" target="_blank" class="read">
-                <i class="fas fa-eye"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="col-s-12 col-4">
-        <div class="team">
-            <img src="images/work/imionline.jpg" alt="International Music Institute">
-            <div class="team-content">
-                <h3 class="team-title">International Music Institute</h3>
-                <span class="post">International Music Institute</span>
-                <p class="description">
-                    Wordpress
-                </p>
-            </div>
-            <a href="http://www.imionline.it" target="_blank" class="read">
-                <i class="fas fa-eye"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="col-s-12 col-4">
-        <div class="team">
-            <img src="images/work/studiofelicettiroma.jpg" alt="Studio Felicetti">
-            <div class="team-content">
-                <h3 class="team-title">Studio Felicetti</h3>
-                <span class="post">Studio Felicetti</span>
-                <p class="description">
-                    Wordpress
-                </p>
-            </div>
-            <a href="https://www.studiofelicettiroma.it" target="_blank" class="read">
-                <i class="fas fa-eye"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="col-s-12 col-4">
-        <div class="team">
-            <img src="images/work/elettropan.jpg" alt="Elettropan">
-            <div class="team-content">
-                <h3 class="team-title">Elettropan</h3>
-                <span class="post">Elettropan</span>
-                <p class="description">
-                    Wordpress
-                </p>
-            </div>
-            <a href="http://www.elettropan.it" target="_blank" class="read">
-                <i class="fas fa-eye"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="col-s-12 col-4">
-        <div class="team">
-            <img src="images/work/architecturewayahead.png" alt="Architecture Way Ahead">
-            <div class="team-content">
-                <h3 class="team-title">Architecture Way Ahead</h3>
-                <span class="post">Architecture Way Ahead</span>
-                <p class="description">
-                    LAMP Project
-                </p>
-            </div>
-            <a href="http://www.architecturewayahead.co.uk" target="_blank" class="read">
-                <i class="fas fa-eye"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="col-s-12 col-4">
-        <div class="team">
-            <img src="images/work/covianalytics.png" alt="CoVi Analytics">
-            <div class="team-content">
-                <h3 class="team-title">CoVi Analytics</h3>
-                <span class="post">CoVi Analytics</span>
-                <p class="description">
-                    LAMP Project
-                </p>
-            </div>
-            <a href="http://www.architecturewayahead.co.uk" target="_blank" class="read">
-                <i class="fas fa-eye"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="col-s-12 col-4">
-        <div class="team">
-            <img src="images/work/sit-srl.png" alt="Sit Srl">
-            <div class="team-content">
-                <h3 class="team-title">Sit Srl</h3>
-                <span class="post">Sit Srl</span>
-                <p class="description">
-                    CMR
-                </p>
-            </div>
-            <a href="http://www.architecturewayahead.co.uk" target="_blank" class="read">
-                <i class="fas fa-eye"></i>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="hilight text-center mt-50"><h2>About Us</h2></div>
-    <div id="about" class="row container">
-        <div class="col-s-12 col-m-4 col-3">
-            <div class="team">
-                <img src="images/team/francesco-bianco.png" alt="Francesco Bianco">
-                <div class="team-content">
-                    <h3 class="team-title">Francesco Bianco</h3>
-                    <span class="post">Software Engineer</span>
-                    <p class="description">
-                        Passionate about chess and mathematics,
-                        I approach the work in the world of software development
-                        with a lot of enthusiasm and professionalism.
-                </div>
-            </div>
-        </div>
-
-        <div class="col-s-12 col-m-4 col-3">
-            <div class="team">
-                <img src="images/team/mauro-sebastianelli.jpg" alt="Mauro Sebastianelli">
-                <div class="team-content">
-                    <h3 class="team-title">Mauro Sebastianelli</h3>
-                    <span class="post">Web Developer</span>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio exercitationem facilis laborum perferendis quasi, ratione.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-s-12 col-m-4 col-3">
-        <div class="team">
-            <img src="images/team/francesco-paternostro.jpg" alt="Francesco Paternostro">
-            <div class="team-content">
-                <h3 class="team-title">Francesco Paternostro</h3>
-                <span class="post">UI/UX Designer</span>
-                <p class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio exercitationem facilis laborum perferendis quasi, ratione.
-                </p>
-            </div>
-        </div>
-    </div>
-
-        <div class="col-s-12 col-m-4 col-3">
-            <div class="team">
-                <img src="images/team/alberto-nugnes.jpg" alt="Alberto Nugnes">
-                <div class="team-content">
-                    <h3 class="team-title">Alberto Nugnes</h3>
-                    <span class="post">Dev Ops</span>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio exercitationem facilis laborum perferendis quasi, ratione.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row container">
-        <div class="col-s-12 col-m-4 col-3">
-            <div class="team">
-                <img src="images/team/francesco-paternostro1.jpg" alt="Riccardo De leo">
-                <div class="team-content">
-                    <h3 class="team-title">Riccardo De leo</h3>
-                    <span class="post">Web Developer</span>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio exercitationem facilis laborum perferendis quasi, ratione.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-
-</div>
-
-<div>
-    <div id="wrapper4">
-        <div id="footer" class="container">
-            <div id="contact">
-                <header class="title">
-                    <h2>Get in touch</h2>
-                    <span class="byline">Phasellus nec erat sit amet nibh pellentesque congue</span></header>
-                <ul class="contact">
-                    <li><a href="#"><i class="fab fa-twitter"></i><span>Twitter</span></a></li>
-                    <li><a href="https://github.com/aliengine"><i class="fab fa-github"></i><span>GitHub</span></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div id="copyright" class="container">
-        <p>&copy; Aliengine ltd. | <span id="year"></span> All rights reserved.</p>
-        <p>
-            <a href="http://jigsaw.w3.org/css-validator/check/referer">
-                <img style="border:0;width:88px;height:31px"
-                     src="//jigsaw.w3.org/css-validator/images/vcss"
-                     alt="CSS Valido!" />
-            </a>
-
-            <a href="http://jigsaw.w3.org/css-validator/check/referer">
-                <img style="border:0;width:88px;height:31px"
-                     src="//jigsaw.w3.org/css-validator/images/vcss-blue"
-                     alt="CSS Valido!" />
-            </a>
-        </p>
-    </div>
-</div>
-
-<script defer src="js/script.js"></script>
+    startButton.addEventListener('click', () => {
+      let timeString = timeInput.value;
+      let [mins, secs] = timeString.split(':');
+      time = parseInt(mins) * 60 + parseInt(secs);
+      intervalId = setInterval(() => {
+        let mins = Math.floor(time / 60);
+        let secs = time % 60;
+        timerElement.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        time--;
+        if (time <= 0) {
+          clearInterval(intervalId);
+          timerElement.textContent = 'Time Up!!';
+          // play a bell sound
+          const audio = new Audio('audio/beep.mp3');
+          audio.play();
+          setTimeout(() => {
+            timerElement.textContent = '00:00';
+            timeInput.value = '00:00';
+          }, 2000); // reset timer and input field after 2 seconds
+        }
+      }, 1000);
+    });
+  </script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +65,7 @@
           clearInterval(intervalId);
           timerElement.textContent = 'Time Up!!';
           // play a bell sound
-          const audio = new Audio('audio/beep.mp3');
+          const audio = new Audio('css/beep.mp3');
           audio.play();
           setTimeout(() => {
             timerElement.textContent = '00:00';
